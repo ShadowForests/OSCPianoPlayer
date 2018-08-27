@@ -10,8 +10,8 @@ musicPlayer = mp.MusicPlayer()
 try:
     song_test = sys.argv[1]
 except:
-    print("OSCPianoPlayer v.0.1 by ShadowForest")
-    print("Source: https://github.com/...")
+    print("OSCPianoPlayer v.1.0 by ShadowForest")
+    print("Source: https://github.com/ShadowForests/OSCPianoPlayer")
     print("----------------------------------------------")
     print("Note: Please only play one song at a time, and don't play if someone else is playing!")
     print("      Don't play song animations in game while a song is playing!")
