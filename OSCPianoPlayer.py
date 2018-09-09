@@ -30,7 +30,7 @@ except:
             print("----------------------------------------------")
             midifile = input("Drop midi file here and hit enter: ")
             try:
-                musicPlayer.play_midi(midifile)
+                musicPlayer.play_midi(midifile, "piano_solo")
                 print("Finished playing.")
             except KeyboardInterrupt:
                 print("Stopped song.")
@@ -49,7 +49,7 @@ except:
             print(e)
             print("Error: Invalid midi file, try again")
 try:
-    musicPlayer.play_midi(sys.argv[1])
+    musicPlayer.play_midi(sys.argv[1], "piano_solo")
     print("Finished playing.")
 except:
     print("Stopped song.")
