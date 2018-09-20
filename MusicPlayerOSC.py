@@ -454,6 +454,7 @@ class MusicPlayer:
         for x in pattern:
             instrument += 1
             tick_time = 0
+            check_notes = True
             for y in x:
                 # Increment time
                 try:
@@ -469,20 +470,20 @@ class MusicPlayer:
                         except:
                             print("Skipping instrument: unknown")
                         # Percussion channel
-                        break
-                    else:
-                        if y.data[0]+1 in self.percussive_instruments:
-                            try:
-                                print("Skipping instrument: " + self.instruments[y.data[0]+1])
-                            except:
-                                print("Skipping instrument: unknown")
-                            break
+                        check_notes = False
+                    elif y.data[0]+1 in self.percussive_instruments:
+                        try:
+                            print("Skipping instrument: " + self.instruments[y.data[0]+1])
+                        except:
+                            print("Skipping instrument: unknown")
+                        check_notes = False
                         # TODO: Add future check for non-piano instruments?
                         #print("P", str(y.channel+1), str(y.data[0]+1), instruments[y.data[0]+1])
-                        pass
+                    else:
+                        check_notes = True
 
                 # Check for note presses
-                if y.name == "Note On":
+                if y.name == "Note On" and check_notes:
                     try:
                         # data = [key, velocity]
                         # velocity = strength note is pressed
